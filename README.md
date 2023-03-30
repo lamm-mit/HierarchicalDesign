@@ -8,9 +8,9 @@ We report a computational approach towards multiscale architected materials anal
 
 This repository contains a VQ-VAE model to learn codebook representations of hierarchical structures, and generative attention-diffusion model models to produce microstructural candidates from stress-strain conditioning, and stress-strain results from microstructural input.  This code consists of 3 models
 
-1.  Model 1 (VQ-VAE to encode hierarchical architected microstructures)
-2.  Model 2 (diffusion model to predict hierarchical architected microstructures from a stress-strain response conditioning)
-3.  Model 3 (diffusion model to predict stress-strain response from a microstructure)
+- Item 1 Model 1 (VQ-VAE to encode hierarchical architected microstructures)
+- Item 2 Model 2 (diffusion model to predict hierarchical architected microstructures from a stress-strain response conditioning)
+- Item 3  Model 3 (diffusion model to predict stress-strain response from a microstructure)
 
 Users should first train the VQ-VAE model (Model 1), then the attention-diffusion models (Models 2 and/or 3). 
 
@@ -49,9 +49,9 @@ jupyter-lab --no-browser
 ```
 Then open the sample Jupyter file and train and/or load pretrained models. 
 
-## Model 1: VQ-VAE model to learn codebook representations of hierarchical structures: VQ_VAE_Microstructure.ipynb
-## Model 2: Generative attention-diffusion model: HierarchicalDesignDIffusion_GetMicrostructure.ipynb
-## Model 3: Attention-diffusion model to predict stress-strain response from microstructure: HierarchicalDesignDIffusion_GetStressStrain.ipynb 
+- Item 1 Model 1: VQ-VAE model to learn codebook representations of hierarchical structures: VQ_VAE_Microstructure.ipynb
+- Item 1 Model 2: Generative attention-diffusion model: HierarchicalDesignDIffusion_GetMicrostructure.ipynb
+- Item 1 Model 3: Attention-diffusion model to predict stress-strain response from microstructure: HierarchicalDesignDIffusion_GetStressStrain.ipynb 
 
 ### Details on the architecture and approach
 
