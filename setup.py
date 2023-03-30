@@ -48,6 +48,7 @@ setup(
     'IProgress',
     'ipywidgets',
     'opencv-python',
+    'seaborn',
   ],
   classifiers=[
     'Development Status :: 4 - Beta',
