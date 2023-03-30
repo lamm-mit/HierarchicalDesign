@@ -67,7 +67,24 @@ The figure shows an overview of the neural network architecture used to solve th
 - [Model 1 weights](https://www.dropbox.com/s/cluk4e4q95laqu2/model-epoch_128.pt?dl=0)
 - [Model 2 weights](https://www.dropbox.com/s/nnus6m2z5jbbshv/statedict_save-model-epoch_4000_FINAL.pt?dl=0)
 - [Model 3 weights](https://www.dropbox.com/s/u4mojfwp2uxjqkh/statedict_save-model-epoch_610_FINAL.pt?dl=0)
- 
+
+### Overview of the data and format
+
+The CSV file includes both, references to the microstructure data (column "mcirostructure") and stress data (column "stresses"). There is no separate strain data stored; the list of strains per stress increment is identical for all samples and defined in the code. 
+
+Example, a list of stress values: 
+```
+[2.8133392e-04, 5.0026216e-02, 1.0911082e-01, 1.5260771e-01, 1.9775425e-01,
+ 2.4043675e-01, 2.8037483e-01, 2.9301879e-01, 2.9600343e-01, 2.9962808e-01,
+ 3.0461299e-01, 3.0993605e-01, 3.1720343e-01, 3.2225695e-01, 3.2850131e-01,
+ 3.3622128e-01, 3.4194285e-01, 3.4944272e-01, 3.5820404e-01, 3.6438131e-01,
+ 3.7371701e-01, 3.8643220e-01, 4.0058151e-01, 4.1546318e-01, 4.3120158e-01,
+ 4.4801408e-01, 4.6275303e-01, 4.7932705e-01, 4.9467662e-01, 5.1254719e-01,
+ 5.3236824e-01, 5.5691981e-01]
+ ```
+
+The microstructure data consists of images, each of which is associated to a list of stress data as defined in the CSV file. 
+
 ### Acknowledgements 
 
 This code is based on [https://github.com/lucidrains/imagen-pytorch](https://github.com/lucidrains/imagen-pytorch) and [https://github.com/lamm-mit/DynaGen](https://github.com/lamm-mit/DynaGen). 
