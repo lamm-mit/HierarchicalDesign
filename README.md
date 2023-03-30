@@ -32,12 +32,13 @@ jupyter-lab --no-browser
 ```
 Then open the sample Jupyter file and train and/or load pretrained models. 
 
+# Acknowledgements 
 
 This code is based on [https://github.com/lucidrains/imagen-pytorch](https://github.com/lucidrains/imagen-pytorch) and [https://github.com/lamm-mit/DynaGen](https://github.com/lamm-mit/DynaGen). 
 
 ```
-@article{BuehlerASME_JAP_2022,
-    title   = {Modeling Atomistic Dynamic Fracture Mechanisms Using a Progressive Transformer Diffusion Model},
+@article{BuehlerMSMSE_2023,
+    title   = {A computational building block approach towards multiscale architected materials analysis and design with application to hierarchical metal metamaterials},
     author  = {M.J. Buehler},
     journal = {Modelling and Simulation in Materials Science and Engineering},
     year    = {2023},
