@@ -59,6 +59,11 @@ The figure shows an overview of the neural network architecture used to solve th
 
 ![image](https://user-images.githubusercontent.com/101393859/228824011-86f1e866-5cce-4b90-9c9e-64ed88fcab68.png)
 
+
+### Datasets, weights, and additional information
+
+ [https://www.dropbox.com/s/tg4j25rmga4agu4/shc_09_raw_wimagename_5_thick.csv?dl=0](Dataset CSV file). 
+ 
 ### Acknowledgements 
 
 This code is based on [https://github.com/lucidrains/imagen-pytorch](https://github.com/lucidrains/imagen-pytorch) and [https://github.com/lamm-mit/DynaGen](https://github.com/lamm-mit/DynaGen). 
