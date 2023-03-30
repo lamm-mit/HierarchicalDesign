@@ -14,6 +14,8 @@ Users should first train the VQ-VAE model, then the attention-diffusion models.
 
 [1] M. Buehler, A computational building block approach towards multiscale architected materials analysis and design with application to hierarchical metal metamaterials , Modelling and Simulation in Materials Science and Engineering, 2023 
 
+![image](https://user-images.githubusercontent.com/101393859/228823624-aa8bc46f-f0f5-411f-b80a-48821fbb5388.png)
+
 ### How to install and use
 
 ```
