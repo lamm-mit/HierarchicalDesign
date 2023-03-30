@@ -70,7 +70,7 @@ The figure shows an overview of the neural network architecture used to solve th
 
 ### Overview of the data and format
 
-The CSV file includes both, references to the microstructure data (column "mcirostructure") and stress data (column "stresses"). There is no separate strain data stored; the list of strains per stress increment is identical for all samples and defined in the code. 
+You need two files to train the model. First, a CSV file that includes both, references to the microstructure data (column "mcirostructure") and stress data (column "stresses"). There is no separate strain data stored; the list of strains per stress increment is identical for all samples and defined in the code. 
 
 Example, a list of stress values: 
 ```
@@ -82,8 +82,7 @@ Example, a list of stress values:
  4.4801408e-01, 4.6275303e-01, 4.7932705e-01, 4.9467662e-01, 5.1254719e-01,
  5.3236824e-01, 5.5691981e-01]
  ```
-
-The microstructure data consists of images, each of which is associated to a list of stress data as defined in the CSV file. 
+Second, the microstructure data consists of images, each of which is associated to a list of stress data as defined in the CSV file. 
 
 ### Acknowledgements 
 
