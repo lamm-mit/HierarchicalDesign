@@ -14,6 +14,8 @@ Users should first train the VQ-VAE model, then the attention-diffusion models.
 
 [1] M. Buehler, A computational building block approach towards multiscale architected materials analysis and design with application to hierarchical metal metamaterials, Modelling and Simulation in Materials Science and Engineering, 2023 
 
+A bioinspired hierarchical honeycomb material is considered in this study, featuring multiple hierarchical levels incorporated into a complex design space. Panel a shows an overview of the hierarchical makeup with four levels of hierarchy ranging from H1…H4.  Panel b summarizes the mechanical boundary condition used to assess mechanical performance by applying compressive loading. By generating a large number of hierarchical designs and associated stress-strain responses, we construct a data set that consists of paired relationships between microstructure images and nonlinear mechanical properties. Panel c summarizes the two problems addressed here. The forward problem produces a stress-strain response based on the input microstructure. In the inverse problem microstructure candidates are generated based on an input, desired, stress-strain response.       
+
 ![image](https://user-images.githubusercontent.com/101393859/228824190-d5f5c5f5-babd-4d99-b802-08c4590ddfaa.png)
 
 ### How to install and use
@@ -41,6 +43,8 @@ jupyter-lab --no-browser
 Then open the sample Jupyter file and train and/or load pretrained models. 
 
 ### Details on the architecture and approach
+
+The figure shows an overview of the neural network architecture used to solve this problem. The model consists of two parts. First (panel a), a vector quantized variational autoencoder (VQ-VAE) architecture that learns to encode microstructure images into a lower-dimensional latent space. We use a discrete approach here that encodes data into a discrete codebook representation that consists of a one-dimensional vector of length N where each entry is one of n_c possible “words” in the design language that defines the microstructures.  The encoder and decoder blocks each consist of a deep neural network featuring convolutional and attention layers. The VQ-VAE model is trained based on unlabeled data of microstructure images. In the next step (panel b), the pre-trained VQ-VAE model is used as an encoding mechanism to train a diffusion model, where it learns how to produce codebook representations that satisfy a certain conditioning. During training, pairs of conditioning and codebook representations of microstructures are used to minimize the reconstruction loss. Once trained (panel c), the model can be used to generate microstructure solutions based on a certain conditioning stress-strain laws. The stress-strain response is encoded as a series of normalized floating point numbers, concatenated with Fourier positional encoding. An identical model is developed and trained also for the forward problem, where the conditioning is the input microstructure, and the diffusion model produces stress-strain responses. 
 
 ![image](https://user-images.githubusercontent.com/101393859/228824011-86f1e866-5cce-4b90-9c9e-64ed88fcab68.png)
 
