@@ -62,7 +62,11 @@ The figure shows an overview of the neural network architecture used to solve th
 
 ### Datasets, weights, and additional information
 
- [https://www.dropbox.com/s/tg4j25rmga4agu4/shc_09_raw_wimagename_5_thick.csv?dl=0](Dataset CSV file). 
+- [Dataset CSV file](https://www.dropbox.com/s/tg4j25rmga4agu4/shc_09_raw_wimagename_5_thick.csv?dl=0) 
+- [Microstructure data](https://www.dropbox.com/s/dz1hnhedjocacqu/gene_output_thick.zip?dl=0) 
+- [Model 1 weights](https://www.dropbox.com/s/cluk4e4q95laqu2/model-epoch_128.pt?dl=0)
+- [Model 2 weights](https://www.dropbox.com/s/nnus6m2z5jbbshv/statedict_save-model-epoch_4000_FINAL.pt?dl=0)
+- [Model 3 weights](https://www.dropbox.com/s/u4mojfwp2uxjqkh/statedict_save-model-epoch_610_FINAL.pt?dl=0)
  
 ### Acknowledgements 
 
