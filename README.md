@@ -20,6 +20,10 @@ A bioinspired hierarchical honeycomb material is considered in this study, featu
 
 ![image](https://user-images.githubusercontent.com/101393859/228824190-d5f5c5f5-babd-4d99-b802-08c4590ddfaa.png)
 
+### This code consists of 3 models
+
+This code consists of three models: Model 1 (VQ-VAE to encode hierarchical architected microstructures), Model 2 (diffusion model to predict hierarchical architected microstructures from a stress-strain response conditioning), and Model 3 (diffusion model to predict stress-strain response from a microstructure)
+
 ### How to install and use
 
 ```
@@ -43,6 +47,10 @@ Start Jupyter Lab (or Jupyter Notebook):
 jupyter-lab --no-browser
 ```
 Then open the sample Jupyter file and train and/or load pretrained models. 
+
+## Model 1: VQ-VAE model to learn codebook representations of hierarchical structures: VQ_VAE_Microstructure.ipynb
+## Model 2: Generative attention-diffusion model: HierarchicalDesignDIffusion_GetMicrostructure.ipynb
+## Model 3: Attention-diffusion model to predict stress-strain response from microstructure: HierarchicalDesignDIffusion_GetStressStrain.ipynb 
 
 ### Details on the architecture and approach
 
