@@ -11,3 +11,4 @@ def count_parameters (imagen):
     print ("Total parameters: ", pytorch_total_params," trainable parameters: ", pytorch_total_params_trainable)
     print ("----------------------------------------------------------------------------------------------------")
     return
+

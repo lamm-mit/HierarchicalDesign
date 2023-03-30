@@ -19,10 +19,9 @@ import ast
 import pandas as pd
 import numpy as np
   
-from torch.utils.data import DataLoader,Dataset
+
 from torchvision.io import read_image
 import pandas as pd
-from sklearn.model_selection import train_test_split
 
 from PIL import Image
 import time
@@ -44,6 +43,10 @@ import torch.nn.functional as F
 #########################################################
 # CODE BASE: Codebook
 #########################################################
+def get_fmap_from_codebook(model, indices):
+    codes = model.codebook.codebook[indices]
+    fmap = model.codebook.project_out(codes)
+    return rearrange(fmap, 'b h w c -> b c h w')
 
 def exists(val):
     return val is not None
@@ -787,27 +790,31 @@ class NonLocalBlock(nn.Module):
 
 
 class Encoder_Attn(nn.Module):
-    def __init__(self, image_channels=3, latent_dim=128, channels = [128, 128, 128, 256, 256, 512] ):
+    def __init__(self, image_channels=3, latent_dim=128, channels = [128, 128, 128, 256, 256, 512],
+                 start_resolution_VAE_encoder=512,
+                 attn_resolutions_VAE_encoder = [16],
+                 num_res_blocks_encoder=2,
+                ):
         super(Encoder_Attn, self).__init__()
         
-        attn_resolutions = [16]
-        num_res_blocks = 2
-        resolution = im_res_final# 256
+        attn_resolutions  = attn_resolutions_VAE_encoder
+        num_res_blocks_encoder = num_res_blocks_encoder
+        resolution  = start_resolution_VAE_encoder
         
-         
         layers = [nn.Conv2d(image_channels, channels[0], 3, 1, 1)]
         for i in range(len(channels)-1):
             in_channels = channels[i]
             out_channels = channels[i + 1]
-            for j in range(num_res_blocks):
+            for j in range(num_res_blocks_encoder):
                 layers.append(ResidualBlock(in_channels, out_channels))
                 in_channels = out_channels
                 if resolution in attn_resolutions:
                     layers.append(NonLocalBlock(in_channels))
-                    print ("Added attention layer")
+                    #print (f"Added attention layer (encoder) at {resolution}")
             if i != len(channels)-2:
                 layers.append(DownSampleBlock(channels[i+1]))
                 resolution //= 2
+        
         layers.append(ResidualBlock(channels[-1], channels[-1]))
         layers.append(NonLocalBlock(channels[-1]))
         layers.append(ResidualBlock(channels[-1], channels[-1]))
@@ -815,18 +822,24 @@ class Encoder_Attn(nn.Module):
         layers.append(Swish())
         layers.append(nn.Conv2d(channels[-1], latent_dim, 3, 1, 1))
         self.model = nn.Sequential(*layers)
+        
+        print ("Final resolution of encoder (must be start resolution of decoder): ", 2*resolution)
 
     def forward(self, x):
         return self.model(x)
 
 class Decoder_Attn(nn.Module):
-    def __init__(self,  image_channels=3, latent_dim=128,channels = [512, 256, 256, 128, 128] ):
+    def __init__(self,  image_channels=3, latent_dim=128,channels = [512, 256, 256, 128, 128],
+                attn_resolutions_VAE_decoder=[16],
+                 start_resolution_VAE_decoder= 16, 
+                 num_res_blocks_VAE_decoder=3,
+                 
+                ):
         super(Decoder_Attn, self).__init__()
         
-        attn_resolutions = [16]
-        num_res_blocks = 3
-        resolution = 16
-         
+        attn_resolutions = attn_resolutions_VAE_decoder
+        num_res_blocks = num_res_blocks_VAE_decoder
+        resolution = start_resolution_VAE_decoder
          
         in_channels = channels[0]
         layers = [nn.Conv2d(latent_dim, in_channels, 3, 1, 1),
@@ -836,12 +849,12 @@ class Decoder_Attn(nn.Module):
 
         for i in range(len(channels)):
             out_channels = channels[i]
-            for j in range(num_res_blocks):
+            for j in range(num_res_blocks_VAE_decoder):
                 layers.append(ResidualBlock(in_channels, out_channels))
                 in_channels = out_channels
                 if resolution in attn_resolutions:
                     layers.append(NonLocalBlock(in_channels))
-                    print ("Added attention layer")
+                    #print (f"Added attention layer (decoder) at {resolution}")
             if i != 0:
                 layers.append(UpSampleBlock(in_channels))
                 resolution *= 2
@@ -850,6 +863,10 @@ class Decoder_Attn(nn.Module):
         layers.append(Swish())
         layers.append(nn.Conv2d(in_channels, image_channels, 3, 1, 1))
         self.model = nn.Sequential(*layers)
+        
+        print ("Final resolution of decoder: ", resolution//2)
 
     def forward(self, x):
         return self.model(x)
+
+    
