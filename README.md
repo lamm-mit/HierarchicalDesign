@@ -14,6 +14,8 @@ Users should first train the VQ-VAE model, then the attention-diffusion models.
 
 [1] M. Buehler, A computational building block approach towards multiscale architected materials analysis and design with application to hierarchical metal metamaterials, Modelling and Simulation in Materials Science and Engineering, 2023 
 
+### Overview of the problem solved 
+
 A bioinspired hierarchical honeycomb material is considered in this study, featuring multiple hierarchical levels incorporated into a complex design space. Panel a shows an overview of the hierarchical makeup with four levels of hierarchy ranging from H1…H4.  Panel b summarizes the mechanical boundary condition used to assess mechanical performance by applying compressive loading. By generating a large number of hierarchical designs and associated stress-strain responses, we construct a data set that consists of paired relationships between microstructure images and nonlinear mechanical properties. Panel c summarizes the two problems addressed here. The forward problem produces a stress-strain response based on the input microstructure. In the inverse problem microstructure candidates are generated based on an input, desired, stress-strain response.       
 
 ![image](https://user-images.githubusercontent.com/101393859/228824190-d5f5c5f5-babd-4d99-b802-08c4590ddfaa.png)
