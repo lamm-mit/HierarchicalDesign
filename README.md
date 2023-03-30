@@ -6,9 +6,13 @@ We report a computational approach towards multiscale architected materials anal
 
 ### Key steps
 
-This repository contains a VQ-VAE model to learn codebook representations of hierarchical structures, and generative attention-diffusion model models to produce microstructural candidates from stress-strain conditioning, and stress-strain results from microstructural input. 
+This repository contains a VQ-VAE model to learn codebook representations of hierarchical structures, and generative attention-diffusion model models to produce microstructural candidates from stress-strain conditioning, and stress-strain results from microstructural input.  This code consists of 3 models
 
-Users should first train the VQ-VAE model, then the attention-diffusion models. 
+1.  Model 1 (VQ-VAE to encode hierarchical architected microstructures)
+2.  Model 2 (diffusion model to predict hierarchical architected microstructures from a stress-strain response conditioning)
+3.  Model 3 (diffusion model to predict stress-strain response from a microstructure)
+
+Users should first train the VQ-VAE model (Model 1), then the attention-diffusion models (Models 2 and/or 3). 
 
 ##### Reference: 
 
@@ -20,9 +24,6 @@ A bioinspired hierarchical honeycomb material is considered in this study, featu
 
 ![image](https://user-images.githubusercontent.com/101393859/228824190-d5f5c5f5-babd-4d99-b802-08c4590ddfaa.png)
 
-### This code consists of 3 models
-
-This code consists of three models: Model 1 (VQ-VAE to encode hierarchical architected microstructures), Model 2 (diffusion model to predict hierarchical architected microstructures from a stress-strain response conditioning), and Model 3 (diffusion model to predict stress-strain response from a microstructure)
 
 ### How to install and use
 
