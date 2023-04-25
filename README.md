@@ -16,7 +16,7 @@ Users should first train the VQ-VAE model (Model 1), then the attention-diffusio
 
 ##### Reference: 
 
-[1] M. Buehler, A computational building block approach towards multiscale architected materials analysis and design with application to hierarchical metal metamaterials, Modelling and Simulation in Materials Science and Engineering, 2023 
+[1] M. Buehler, A computational building block approach towards multiscale architected materials analysis and design with application to hierarchical metal metamaterials, Modelling and Simulation in Materials Science and Engineering, 2023,  https://doi.org/10.1088/1361-651X/accfb5 
 
 ### Overview of the problem solved 
 
@@ -55,10 +55,13 @@ Then open the sample Jupyter file and train and/or load pretrained models.
 
 ### Details on the architecture and approach
 
-The figure shows an overview of the neural network architecture used to solve this problem. The model consists of two parts. First (panel a), a vector quantized variational autoencoder (VQ-VAE) architecture that learns to encode microstructure images into a lower-dimensional latent space. We use a discrete approach here that encodes data into a discrete codebook representation that consists of a one-dimensional vector of length N where each entry is one of n_c possible “words” in the design language that defines the microstructures.  The encoder and decoder blocks each consist of a deep neural network featuring convolutional and attention layers. The VQ-VAE model is trained based on unlabeled data of microstructure images. In the next step (panel b), the pre-trained VQ-VAE model is used as an encoding mechanism to train a diffusion model, where it learns how to produce codebook representations that satisfy a certain conditioning. During training, pairs of conditioning and codebook representations of microstructures are used to minimize the reconstruction loss. Once trained (panel c), the model can be used to generate microstructure solutions based on a certain conditioning stress-strain laws. The stress-strain response is encoded as a series of normalized floating point numbers, concatenated with Fourier positional encoding. An identical model is developed and trained also for the forward problem, where the conditioning is the input microstructure, and the diffusion model produces stress-strain responses. 
+The figure shows an overview of the neural network architecture used to solve this problem. The model consists of two parts. First (panel a), a vector quantized variational autoencoder (VQ-VAE) architecture that learns to encode microstructure images into a lower-dimensional latent space. We use a discrete approach that encodes data into a discrete codebook representation that consists of a one-dimensional vector of length N where each entry is one of n_c possible “words” in the design language that defines the microstructures.  
+
+The encoder and decoder blocks each consist of a deep neural network featuring convolutional and attention layers. The VQ-VAE model is trained based on unlabeled data of microstructure images. In the next step (panel b), the pre-trained VQ-VAE model is used as an encoding mechanism to train a diffusion model, where it learns how to produce codebook representations that satisfy a certain conditioning. During training, pairs of conditioning and codebook representations of microstructures are used to minimize the reconstruction loss. Once trained (panel c), the model can be used to generate microstructure solutions based on a certain conditioning stress-strain laws. 
+
+The stress-strain response is encoded as a series of normalized floating point numbers, concatenated with Fourier positional encoding. An identical model is developed and trained also for the forward problem, where the conditioning is the input microstructure, and the diffusion model produces stress-strain responses. 
 
 ![image](https://user-images.githubusercontent.com/101393859/228824011-86f1e866-5cce-4b90-9c9e-64ed88fcab68.png)
-
 
 ### Datasets, weights, and additional information
 
@@ -96,6 +99,6 @@ This code is based on [https://github.com/lucidrains/imagen-pytorch](https://git
     year    = {2023},
     volume  = {},
     pages   = {},
-    url     = {}
+    url     = {https://doi.org/10.1088/1361-651X/accfb5}
 }
 ```
